@@ -1,0 +1,225 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+body {
+  background-color: rgb(31, 30, 43);
+  color: white;
+}
+
+@keyframes bodyAnimation {
+  0% {
+    background: #283c86; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #45a247,
+      #283c86
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #45a247,
+      #283c86
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+  50% {
+    background: #c0392b; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #8e44ad,
+      #c0392b
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #8e44ad,
+      #c0392b
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+  100% {
+    background: #093028; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #237a57,
+      #093028
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #237a57,
+      #093028
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+}
+
+.mainContainer {
+  text-align: center;
+  overflow: hidden;
+}
+
+.mainContainer h1 {
+  padding: 20px;
+  font-size: 5em;
+}
+
+.mainContainer .title {
+  margin: auto;
+  max-width: 80vmin;
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  font-size: large;
+  font-weight: bolder;
+  text-transform: uppercase;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+a {
+  font-size: large;
+  font-weight: bolder;
+  color: #fff;
+}
+
+.mainContainer .title .time:hover,
+.timing:hover,
+.deadline:hover {
+  font-weight: 900;
+  text-decoration: underline yellow 3px wavy;
+}
+
+.title .active {
+  font-weight: 900;
+  text-decoration: underline yellow 3px wavy;
+}
+
+.clock {
+  position: relative;
+  width: 60vmin;
+  height: 60vmin;
+  background: #000;
+  margin: auto;
+  border-radius: 50%;
+  border: 4px solid rgb(31, 30, 43);
+  box-shadow: 0 -15px 15px rgba(255, 255, 255, 0.05),
+    inset 0 -15px 15px rgba(255, 255, 255, 0.05),
+    0 -15px 15px rgba(0, 0, 0, 0.05), inset 0 -15px 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clock::before {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border: 2px solid white;
+  border-radius: 50%;
+  z-index: 1000;
+  background-color: white;
+}
+
+.mainContainer .operations {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px;
+}
+
+.mainContainer .operations button {
+  width: 10%;
+  height: 2em;
+  color: black;
+}
+
+.clock span {
+  position: absolute;
+  inset: 20px;
+  transform: rotate(calc(30deg * var(--i)));
+}
+
+.clock span b {
+  font-size: 1.5em;
+  display: inline-block;
+  transform: rotate(calc(-30deg * var(--i)));
+}
+
+.hands {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  --rotation: 0;
+}
+
+.hand {
+  position: absolute;
+  width: 6px;
+  height: 30%;
+  background: red;
+}
+
+.sec {
+  width: 1.5%;
+  z-index: 10;
+  transform-origin: bottom;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  transform: rotate(var(--rotation));
+  border: 1px solid white;
+}
+
+.min {
+  width: 1%;
+  height: 20%;
+  background: yellow;
+  z-index: 9;
+  transform-origin: bottom;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  transform: rotate(var(--rotation));
+  border: 1px solid greenyellow;
+}
+
+.operations {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  padding: 20px;
+  gap: 5%;
+}
+
+.operations button {
+  width: 10%;
+  height: 2em;
+  font-size: 1em;
+  font-weight: 600;
+  background: yellow;
+  border: none;
+  border-radius: 15px;
+}
+
+button {
+  animation: bodyAnimation 5s infinite;
+}
+
+@media (max-width: 504px) {
+  .mainContainer h1 {
+    padding: 15px;
+    font-size: 2.5em;
+  }
+
+  .mainContainer .title {
+    font-size: 15px;
+  }
+
+  .clock span b {
+    font-size: 1em;
+  }
+}
